@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+z=`echo "/u/cnd/ets/log/2014/$1"`
+echo "$z"
+
+
+ for x in `echo "$z/$2"`
+ do
+echo "$x"
+ brokerLoc=`find "$x/root/" -name dalserver*`
+ 
+    for y in `echo "$brokerLoc"`
+	
+	do
+	#echo "$y"
+	nomb=`echo "$y" | awk -F '/' '{print $(NF-1)"."$NF}'`
+	zgrep -i "OnDemand"  "$y"  >> /v/global/user/e/en/enriquef/renhonr/REQ2546678/"$1"/"$nomb".txt
+
+ done
+
+done
